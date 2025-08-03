@@ -52,21 +52,28 @@ set(
 )
 
 -- will run nvim-sessionizer script
-set(
-  "n",
-  "<C-n>",
-  "<cmd>!tmux neww nvim-sessionizer<cr>",
-  { desc = "creates new tmux session using nvim-sessionizer script" }
-)
+-- set(
+--   "n",
+--   "<C-n>",
+--   "<cmd>!tmux neww nvim-sessionizer<cr>",
+--   { desc = "creates new tmux session using nvim-sessionizer script" }
+-- )
 
 -- set("n", "<leader>lt", "<cmd>LogThisShit<cr>", { desc = "toggle log this shit on/off" })
 
 -- yank, comment, paste
 vim.keymap.set("n", "ycc", "yygccp", { remap = true })
 
+local fl = require("fzf-lua")
 local wk = require("which-key")
 wk.add({
   { "<leader>f", group = "Search files" }, -- group
+  {"<leader>ff",function() fl.files() end, desc = "find files"},
+  {"<leader>fc",function() fl.files({cwd = vim.fn.stdpath('config')}) end, desc="find config files"},
+  {"<leader>fg",function() fl.grep() end, desc="grep for a word"},
+  {"<leader>fv",function() fl.grep_visual() end, desc="grep visual selection", mode="v"},
+  {"<leader>fw",function() fl.grep_cword() end, desc="grep word under cursor"},
+  {"<leader>fW",function() fl.grep_cWORD() end, desc="grep WORD under cursor"},
   { "<leader>e", group = "File explorer"}, -- group
   { "<leader>g", group = "Git"}, -- group
   -- { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File", mode = "n" },

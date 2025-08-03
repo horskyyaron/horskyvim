@@ -5,14 +5,6 @@ return {
   -- or if using mini.icons/mini.nvim
   -- dependencies = { "echasnovski/mini.icons" },
   opts = {},
-  keys = {
-    {"<leader>ff",function() require("fzf-lua").files() end},
-    {"<leader>fc",function() require("fzf-lua").files({cwd = vim.fn.stdpath('config')}) end},
-    {"<leader>fg",function() require("fzf-lua").grep() end},
-    {"<leader>fv",function() require("fzf-lua").grep_visual() end},
-    {"<leader>fw",function() require("fzf-lua").grep_cword() end},
-    {"<leader>fW",function() require("fzf-lua").grep_cWORD() end}
-  }
 }
 
 
