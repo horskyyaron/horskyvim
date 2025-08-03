@@ -27,6 +27,7 @@ require("lazy").setup({
   spec = {
 	  {"folke/tokyonight.nvim", config = function() vim.cmd.colorscheme "tokyonight" end},
 	  { "mason-org/mason.nvim", opts = {} },
+	  { "mbbill/undotree" },
 	  -- import your plugins
 	  { import = "config.plugins" },
   },
