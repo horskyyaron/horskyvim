@@ -1,6 +1,6 @@
-
 vim.lsp.enable({
-    "lua_ls"
+    "lua_ls",
+    "python_ls",
 })
 
 vim.diagnostic.config({
