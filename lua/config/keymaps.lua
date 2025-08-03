@@ -1,0 +1,81 @@
+local set = vim.keymap.set
+local k = vim.keycode
+
+
+-- Basic movement keybinds, these make navigating splits easy for me
+set("n", "<c-j>", "<c-w><c-j>")
+set("n", "<c-k>", "<c-w><c-k>")
+set("n", "<c-l>", "<c-w><c-l>")
+set("n", "<c-h>", "<c-w><c-h>")
+
+set("n", "n", "nzz", { desc = "centering after next match in search" })
+
+set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+-- Save
+set("n", "<leader>w", "<cmd>w<CR>", {desc = "save"})
+
+-- Quickfix stuff
+set("n", "<leader>qc", "<cmd>cclose<CR>", {desc = "quit quickfix"})
+
+-- centering after operations
+set("n", "<c-d>", "<c-d>zz", { desc = "scroll down and center" })
+set("n", "<c-u>", "<c-u>zz", { desc = "scroll up and center" })
+
+-- Yank and Paste
+set("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
+set("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
+
+-- Toggle hlsearch if it's on, otherwise just do "enter"
+set("n", "<CR>", function()
+  if vim.v.hlsearch == 1 then
+    vim.cmd.nohl()
+    return ""
+  else
+    return k("<CR>")
+  end
+end, { expr = true })
+
+
+-- diff between two windows
+set("n", "<leader>Wd", "<cmd>windo diffthis<cr>", { desc = "window diff" })
+
+-- undotree
+set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "[U]ndo tree" })
+
+-- will run tmux-sessionizer script
+set(
+  "n",
+  "<C-f>",
+  "<cmd>!tmux neww tmux-sessionizer<cr>",
+  { desc = "creates new tmux session using tmux-sessionizer script" }
+)
+
+-- will run nvim-sessionizer script
+set(
+  "n",
+  "<C-n>",
+  "<cmd>!tmux neww nvim-sessionizer<cr>",
+  { desc = "creates new tmux session using nvim-sessionizer script" }
+)
+
+-- set("n", "<leader>lt", "<cmd>LogThisShit<cr>", { desc = "toggle log this shit on/off" })
+
+-- yank, comment, paste
+vim.keymap.set("n", "ycc", "yygccp", { remap = true })
+
+local wk = require("which-key")
+wk.add({
+  { "<leader>f", group = "Search files" }, -- group
+  { "<leader>e", group = "File explorer"}, -- group
+  { "<leader>g", group = "Git"}, -- group
+  -- { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File", mode = "n" },
+  -- {
+  --   -- Nested mappings are allowed and can be added in any order
+  --   -- Most attributes can be inherited or overridden on any level
+  --   -- There's no limit to the depth of nesting
+  --   mode = { "n", "v" }, -- NORMAL and VISUAL mode
+  --   { "<leader>q", "<cmd>q<cr>", desc = "Quit" }, -- no need to specify mode since it's inherited
+  --   { "<leader>w", "<cmd>w<cr>", desc = "Write" },
+  -- }
+})

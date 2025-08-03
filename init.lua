@@ -2,6 +2,7 @@ print("HORSKYVIM")
 
 require("config.lazy")
 require("config.lsp")
+require("config.keymaps")
 
 -- good options
 vim.opt.shiftwidth = 4
@@ -9,24 +10,10 @@ vim.opt.shiftwidth = 4
 -- vim.cmd [[ hi @function.builtin.lua guifg=yellow ]] 
 -- hello
 
---Plan
---oil
---file tree
---git signs
---fugitive
---laygit?
-
 -- faster iteration when working on the configuration files.
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
 vim.keymap.set("v", "<space>x", ":lua<CR>")
-
--- some keymaps 
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-
--- Yank and Paste
-vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
-vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
 
 -- highlight on yanking
