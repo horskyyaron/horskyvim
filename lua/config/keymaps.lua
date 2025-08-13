@@ -1,7 +1,6 @@
 local set = vim.keymap.set
 local k = vim.keycode
 
-
 -- Basic movement keybinds, these make navigating splits easy for me
 set("n", "<c-j>", "<c-w><c-j>")
 set("n", "<c-k>", "<c-w><c-k>")
@@ -13,10 +12,10 @@ set("n", "n", "nzz", { desc = "centering after next match in search" })
 set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Save
-set("n", "<leader>w", "<cmd>w<CR>", {desc = "save"})
+set("n", "<leader>w", "<cmd>w<CR>", { desc = "save" })
 
 -- Quickfix stuff
-set("n", "<leader>qc", "<cmd>cclose<CR>", {desc = "quit quickfix"})
+set("n", "<leader>qc", "<cmd>cclose<CR>", { desc = "quit quickfix" })
 
 -- centering after operations
 set("n", "<c-d>", "<c-d>zz", { desc = "scroll down and center" })
@@ -35,7 +34,6 @@ set("n", "<CR>", function()
     return k("<CR>")
   end
 end, { expr = true })
-
 
 -- diff between two windows
 set("n", "<leader>Wd", "<cmd>windo diffthis<cr>", { desc = "window diff" })
@@ -68,14 +66,51 @@ local fl = require("fzf-lua")
 local wk = require("which-key")
 wk.add({
   { "<leader>f", group = "Search files" }, -- group
-  {"<leader>ff",function() fl.files() end, desc = "find files"},
-  {"<leader>fc",function() fl.files({cwd = vim.fn.stdpath('config')}) end, desc="find config files"},
-  {"<leader>fg",function() fl.grep() end, desc="grep for a word"},
-  {"<leader>fv",function() fl.grep_visual() end, desc="grep visual selection", mode="v"},
-  {"<leader>fw",function() fl.grep_cword() end, desc="grep word under cursor"},
-  {"<leader>fW",function() fl.grep_cWORD() end, desc="grep WORD under cursor"},
-  { "<leader>e", group = "File explorer"}, -- group
-  { "<leader>g", group = "Git"}, -- group
+  {
+    "<leader>ff",
+    function()
+      fl.files()
+    end,
+    desc = "find files",
+  },
+  {
+    "<leader>fc",
+    function()
+      fl.files({ cwd = vim.fn.stdpath("config") })
+    end,
+    desc = "find config files",
+  },
+  {
+    "<leader>fg",
+    function()
+      fl.grep()
+    end,
+    desc = "grep for a word",
+  },
+  {
+    "<leader>fv",
+    function()
+      fl.grep_visual()
+    end,
+    desc = "grep visual selection",
+    mode = "v",
+  },
+  {
+    "<leader>fw",
+    function()
+      fl.grep_cword()
+    end,
+    desc = "grep word under cursor",
+  },
+  {
+    "<leader>fW",
+    function()
+      fl.grep_cWORD()
+    end,
+    desc = "grep WORD under cursor",
+  },
+  { "<leader>e", group = "File explorer" }, -- group
+  { "<leader>g", group = "Git" }, -- group
   -- { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File", mode = "n" },
   -- {
   --   -- Nested mappings are allowed and can be added in any order

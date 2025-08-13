@@ -3,8 +3,14 @@ return {
   opts = {},
   config = function()
     require("conform").setup({
-      default_format_opts = {
+      -- default_format_opts = {
+      --   lsp_format = "fallback",
+      -- },
+
+      format_on_save = {
+        -- I recommend these options. See :help conform.format for details.
         lsp_format = "fallback",
+        timeout_ms = 3500,
       },
       formatters_by_ft = {
         lua = { "stylua" },
@@ -24,13 +30,14 @@ return {
         css = { "prettierd", "prettier", stop_after_first = true },
         tex = { "latexindent", "tex-fmt" },
         json = { "jq" },
+        ruby = { "rubocop" },
       },
     })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = "*",
-      callback = function(args)
-        require("conform").format({ bufnr = args.buf })
-      end,
-    })
+    -- vim.api.nvim_create_autocmd("BufWritePre", {
+    --   pattern = "*",
+    --   callback = function(args)
+    --     require("conform").format({ bufnr = args.buf })
+    --   end,
+    -- })
   end,
 }

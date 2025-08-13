@@ -10,10 +10,10 @@ require("config.options")
 -- good options
 vim.opt.shiftwidth = 4
 
--- vim.cmd [[ hi @function.builtin.lua guifg=yellow ]] 
+-- vim.cmd [[ hi @function.builtin.lua guifg=yellow ]]
 -- hello
 
 -- faster iteration when working on the configuration files.
-vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>", {desc = "source file"})
-vim.keymap.set("n", "<space>x", ":.lua<CR>", {desc = "source line"})
-vim.keymap.set("v", "<space>x", ":lua<CR>", {desc = "source visual selection"})
+vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>", { desc = "source file" })
+vim.keymap.set("n", "<space>x", ":.lua<CR>", { desc = "source line" })
+vim.keymap.set("v", "<space>x", ":lua<CR>", { desc = "source visual selection" })
