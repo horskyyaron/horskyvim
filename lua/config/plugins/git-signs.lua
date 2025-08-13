@@ -29,23 +29,43 @@ return {
         end)
 
         -- Actions
-        map("n", "<leader>hs", gitsigns.stage_hunk, {desc = "stage hunk"})
-        map("n", "<leader>hr", gitsigns.reset_hunk, {desc = "reset hunk"})
-        map("v", "<leader>hr", function()
-          gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-        end)
-        map("v", "<leader>hs", function()
-          gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-        end, {desc = "stage visual selection"})
-        map("n", "<leader>hS", gitsigns.stage_buffer)
-        map("n", "<leader>hu", gitsigns.undo_stage_hunk)
-        map("n", "<leader>hR", gitsigns.reset_buffer)
-        map("n", "<leader>hp", gitsigns.preview_hunk, {desc = "preview_hunk"})
+        -- Stage hunk / selection
+        map({ "n", "v" }, "<leader>hs", function()
+          if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
+            gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+          else
+            gitsigns.stage_hunk()
+          end
+        end, { desc = "stage hunk / selection" })
+
+        -- Reset hunk / selection
+        map({ "n", "v" }, "<leader>hr", function()
+          if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
+            gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+          else
+            gitsigns.reset_hunk()
+          end
+        end, { desc = "reset hunk / selection" })
+
+        -- Stage entire buffer
+        map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "stage entire buffer" })
+
+        -- Undo stage hunk
+        map("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "undo stage hunk" })
+
+        -- Reset entire buffer
+        map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "reset entire buffer" })
+
+        -- Preview hunk
+        map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "preview hunk" })
+
+        -- Blame current line (full)
         map("n", "<leader>hb", function()
           gitsigns.blame_line({ full = true })
-        end)
+        end, { desc = "blame current line (full)" })
+
+        -- Toggle inline blame
         map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "toggle git blame" })
-        map("n", "<leader>hd", gitsigns.diffthis)
       end,
     })
   end,
