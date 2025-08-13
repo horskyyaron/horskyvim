@@ -14,6 +14,7 @@ set.inccommand = "split"
 set.smartcase = true
 set.ignorecase = true
 
+set.wrap = false
 ----- Personal Preferences -----
 set.relativenumber = true
 
@@ -32,7 +33,7 @@ set.shada = { "'10", "<0", "s10", "h" }
 -- Don't have `o` add a comment
 set.formatoptions:remove("o")
 
-set.wrap = true
+-- set.wrap = true
 set.linebreak = true
 
 set.tabstop = 4
