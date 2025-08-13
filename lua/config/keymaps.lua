@@ -63,6 +63,7 @@ set(
 vim.keymap.set("n", "ycc", "yygccp", { remap = true })
 
 local fl = require("fzf-lua")
+local snacks = require("snacks")
 local wk = require("which-key")
 wk.add({
   { "<leader>f", group = "Search files" }, -- group
@@ -110,7 +111,14 @@ wk.add({
     desc = "grep WORD under cursor",
   },
   { "<leader>e", group = "File explorer" }, -- group
-  { "<leader>g", group = "Git" }, -- group
+  { "<leader>g", group = "Git" },           -- group
+  {
+    "<leader>gb",
+    function()
+      snacks.gitbrowse()
+    end,
+    desc = "Git browse",
+  },
   -- { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File", mode = "n" },
   -- {
   --   -- Nested mappings are allowed and can be added in any order
