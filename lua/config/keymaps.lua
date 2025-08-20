@@ -49,6 +49,9 @@ set(
   { desc = "creates new tmux session using tmux-sessionizer script" }
 )
 
+set("n", "<leader>lt", "<cmd>LogThisShit<cr>", { desc = "toggle log this shit on/off" })
+
+set("n", "<leader>td", "<cmd>TSToolsGoToSourceDefinition<cr>", { desc = "Go to source definition" })
 -- will run nvim-sessionizer script
 -- set(
 --   "n",
@@ -65,6 +68,7 @@ vim.keymap.set("n", "ycc", "yygccp", { remap = true })
 local fl = require("fzf-lua")
 local snacks = require("snacks")
 local wk = require("which-key")
+
 wk.add({
   { "<leader>f", group = "Search files" }, -- group
   {
@@ -111,7 +115,7 @@ wk.add({
     desc = "grep WORD under cursor",
   },
   { "<leader>e", group = "File explorer" }, -- group
-  { "<leader>g", group = "Git" },           -- group
+  { "<leader>g", group = "Git" }, -- group
   {
     "<leader>gb",
     function()
@@ -119,13 +123,4 @@ wk.add({
     end,
     desc = "Git browse",
   },
-  -- { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File", mode = "n" },
-  -- {
-  --   -- Nested mappings are allowed and can be added in any order
-  --   -- Most attributes can be inherited or overridden on any level
-  --   -- There's no limit to the depth of nesting
-  --   mode = { "n", "v" }, -- NORMAL and VISUAL mode
-  --   { "<leader>q", "<cmd>q<cr>", desc = "Quit" }, -- no need to specify mode since it's inherited
-  --   { "<leader>w", "<cmd>w<cr>", desc = "Write" },
-  -- }
 })
