@@ -32,7 +32,7 @@ require("lazy").setup({
       end,
     },
     { "mason-org/mason.nvim", opts = {} },
-    "tpope/vim-surround",
+    { "tpope/vim-surround" },
     { "mbbill/undotree" },
     -- import your plugins
     { import = "config.plugins" },
