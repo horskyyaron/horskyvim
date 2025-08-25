@@ -124,3 +124,7 @@ wk.add({
     desc = "Git browse",
   },
 })
+
+set("n", "E", function()
+  vim.diagnostic.open_float()
+end)
