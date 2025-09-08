@@ -13,6 +13,7 @@ set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Save
 set("n", "<leader>w", "<cmd>w<CR>", { desc = "save" })
+set("n", "<leader>q", "<cmd>q<CR>", { desc = "save" })
 
 -- Quickfix stuff
 set("n", "<leader>qc", "<cmd>cclose<CR>", { desc = "quit quickfix" })
@@ -128,3 +129,5 @@ wk.add({
 set("n", "E", function()
   vim.diagnostic.open_float()
 end)
+
+set("n", "<C-;>", ":")

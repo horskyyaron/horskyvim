@@ -26,9 +26,12 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
   spec = {
     { "folke/tokyonight.nvim" },
+    { "ribru17/bamboo.nvim" },
+    { "vague2k/vague.nvim" },
     { "mason-org/mason.nvim", opts = {} },
     { "tpope/vim-surround" },
     { "mbbill/undotree" },
+    { "sindrets/diffview.nvim" },
     -- import your plugins
     { import = "config.plugins" },
   },

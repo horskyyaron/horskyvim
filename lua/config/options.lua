@@ -3,7 +3,7 @@ local set = vim.opt
 ----- setting colorscheme  -----
 -- Can be one of: bathory | burzum | dark-funeral | darkthrone | emperor | gorgoroth | immortal | impaled-nazarene | khold | marduk | mayhem | nile | taake | venom
 -- vim.cmd([[colorscheme gruvbox-material]])
--- vim.cmd([[colorscheme gruvbox-material]])
+vim.cmd([[colorscheme bamboo]])
 
 ----- Interesting Options -----
 
