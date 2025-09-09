@@ -70,6 +70,20 @@ local fl = require("fzf-lua")
 local snacks = require("snacks")
 local wk = require("which-key")
 
+-- Diffview nvim utilities function
+local function get_default_branch_name()
+  local res = vim.system({ "git", "rev-parse", "--verify", "main" }, { capture_output = true }):wait()
+  return res.code == 0 and "main" or "master"
+end
+
+-- local function toggle_diffview(cmd)
+--   if next(require("diffview.lib").views) == nil then
+--     vim.cmd(cmd)
+--   else
+--     vim.cmd("DiffviewClose")
+--   end
+-- end
+
 wk.add({
   { "<leader>f", group = "Search files" }, -- group
   {
@@ -123,6 +137,26 @@ wk.add({
       snacks.gitbrowse()
     end,
     desc = "Git browse",
+  },
+  { "<leader>d", group = "Diffview" }, -- group
+  { "<leader>dd", "<cmd>DiffviewFileHistory<cr>", desc = "Repo history" },
+  { "<leader>df", "<cmd>DiffviewFileHistory --follow %<cr>", desc = "File history" },
+  { "<leader>ds", "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = "Range History", mode = "v" },
+  { "<leader>dl", "<Cmd>.DiffviewFileHistory --follow<CR>", desc = "Line history" },
+  { "<leader>dh", "<cmd>DiffviewOpen<cr>", desc = "Diff against HEAD" },
+  {
+    "<leader>dm",
+    function()
+      vim.cmd("DiffviewOpen " .. get_default_branch_name())
+    end,
+    desc = "Diff against local Master",
+  },
+  {
+    "<leader>dM",
+    function()
+      vim.cmd("DiffviewOpen HEAD..origin/" .. get_default_branch_name())
+    end,
+    desc = "Diff against remote Master",
   },
 })
 
