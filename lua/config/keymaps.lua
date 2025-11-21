@@ -18,6 +18,9 @@ set("n", "<leader>q", "<cmd>q<CR>", { desc = "save" })
 -- Quickfix stuff
 set("n", "<leader>qc", "<cmd>cclose<CR>", { desc = "quit quickfix" })
 
+-- spell
+set("n", "<c-s>", "z=1<cr><cr>", { desc = "autocorrect spell" })
+
 -- centering after operations
 set("n", "<c-d>", "<c-d>zz", { desc = "scroll down and center" })
 set("n", "<c-u>", "<c-u>zz", { desc = "scroll up and center" })
@@ -66,7 +69,7 @@ set("n", "<leader>td", "<cmd>TSToolsGoToSourceDefinition<cr>", { desc = "Go to s
 -- yank, comment, paste
 vim.keymap.set("n", "ycc", "yygccp", { remap = true })
 
-local fl = require("fzf-lua")
+local builtin = require("telescope.builtin")
 local snacks = require("snacks")
 local wk = require("which-key")
 
@@ -89,21 +92,21 @@ wk.add({
   {
     "<leader>ff",
     function()
-      fl.files()
+      builtin.find_files()
     end,
     desc = "find files",
   },
   {
     "<leader>fc",
     function()
-      fl.files({ cwd = vim.fn.stdpath("config") })
+      builtin.find_files({ cwd = vim.fn.stdpath("config") })
     end,
     desc = "find config files",
   },
   {
     "<leader>fg",
     function()
-      fl.grep()
+      builtin.live_grep()
     end,
     desc = "grep for a word",
   },
@@ -115,20 +118,20 @@ wk.add({
     desc = "grep visual selection",
     mode = "v",
   },
-  {
-    "<leader>fw",
-    function()
-      fl.grep_cword()
-    end,
-    desc = "grep word under cursor",
-  },
-  {
-    "<leader>fW",
-    function()
-      fl.grep_cWORD()
-    end,
-    desc = "grep WORD under cursor",
-  },
+  -- {
+  --   "<leader>fw",
+  --   function()
+  --     fl.grep_cword()
+  --   end,
+  --   desc = "grep word under cursor",
+  -- },
+  -- {
+  --   "<leader>fW",
+  --   function()
+  --     fl.grep_cWORD()
+  --   end,
+  --   desc = "grep WORD under cursor",
+  -- },
   { "<leader>e", group = "File explorer" }, -- group
   { "<leader>g", group = "Git" }, -- group
   {
