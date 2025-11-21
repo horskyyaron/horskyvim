@@ -17,6 +17,9 @@ set("n", "<leader>w", "<cmd>w<CR>", { desc = "save" })
 -- Quickfix stuff
 set("n", "<leader>qc", "<cmd>cclose<CR>", { desc = "quit quickfix" })
 
+-- spell
+set("n", "<c-s>", "z=1<cr><cr>", { desc = "autocorrect spell" })
+
 -- centering after operations
 set("n", "<c-d>", "<c-d>zz", { desc = "scroll down and center" })
 set("n", "<c-u>", "<c-u>zz", { desc = "scroll up and center" })
@@ -92,14 +95,14 @@ wk.add({
     end,
     desc = "grep for a word",
   },
-  -- {
-  --   "<leader>fv",
-  --   function()
-  --     fl.grep_visual()
-  --   end,
-  --   desc = "grep visual selection",
-  --   mode = "v",
-  -- },
+  {
+    "<leader>fv",
+    function()
+      fl.grep_visual()
+    end,
+    desc = "grep visual selection",
+    mode = "v",
+  },
   -- {
   --   "<leader>fw",
   --   function()
