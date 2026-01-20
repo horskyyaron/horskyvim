@@ -45,6 +45,9 @@ set("n", "<leader>Wd", "<cmd>windo diffthis<cr>", { desc = "window diff" })
 -- undotree
 set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "[U]ndo tree" })
 
+-- select inside last visual selection
+set("x", "<Leader>/", "<Esc>/\\%V", { desc = "search in last visual selection" })
+
 -- will run tmux-sessionizer script
 set(
   "n",
@@ -168,3 +171,5 @@ set("n", "E", function()
 end)
 
 set("n", "<C-;>", ":")
+
+set("n", "<leader>D", ":put =strftime('%d/%m/%Y')<CR>")

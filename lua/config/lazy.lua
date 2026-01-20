@@ -32,6 +32,11 @@ require("lazy").setup({
     { "tpope/vim-surround" },
     { "mbbill/undotree" },
     { "sindrets/diffview.nvim" },
+    {
+      "esmuellert/vscode-diff.nvim",
+      dependencies = { "MunifTanjim/nui.nvim" },
+      cmd = "CodeDiff",
+    },
     -- import your plugins
     { import = "config.plugins" },
   },
