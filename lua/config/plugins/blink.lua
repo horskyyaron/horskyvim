@@ -26,6 +26,7 @@ return {
         default = { "lsp", "buffer", "snippets", "path", "emoji" },
 
         per_filetype = {
+          markdown = { "obsidian_new", "lsp", "obsidian", "obsidian_tags", "buffer", "snippets", "path", "emoji" },
           sql = { "dadbod" },
           -- optionally inherit from the `default` sources
           lua = { inherit_defaults = true, "lazydev" },
@@ -43,7 +44,7 @@ return {
             name = "Emoji",
             score_offset = 15, -- Tune by preference
             opts = {
-              insert = true, -- Insert emoji (default) or complete its name
+              insert = true,   -- Insert emoji (default) or complete its name
               ---@type string|table|fun():table
               trigger = function()
                 return { ":" }
